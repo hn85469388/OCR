@@ -31,5 +31,28 @@ class RSU1(nn.Module):
         super(RSU1, self).__init__()
 
         self.en1 = Convalution(in_ch, out_ch, dirate=1)
-        self.en2 = Encode(out_ch,mid_ch,1)
-        self.en3 = Encode(mid_ch,mid_ch,1)
+        self.en2 = Encode(out_ch, mid_ch, 1)
+        self.en3 = Encode(mid_ch, mid_ch, 1)
+        self.en4 = Encode(mid_ch, mid_ch, 1)
+        self.en5 = Encode(mid_ch, mid_ch, 1)
+        self.en6 = Encode(mid_ch, mid_ch, 1)
+        self.en7 = Convalution(mid_ch, mid_ch, 2)
+        self.en8 = Convalution(mid_ch, mid_ch, 2)
+
+        self.de6 = Convalution(mid_ch * 2, mid_ch, dirate=1)
+        self.de5 = Convalution(mid_ch * 2, mid_ch, dirate=1)
+        self.de4 = Convalution(mid_ch * 2, mid_ch, dirate=1)
+        self.de3 = Convalution(mid_ch * 2, mid_ch, dirate=1)
+        self.de2 = Convalution(mid_ch * 2, mid_ch, dirate=1)
+        self.de1 = Convalution(mid_ch * 2, mid_ch, dirate=1)
+
+    def forward(self, x):
+        en1 = self.en1(x)
+        en2 = self.en2(en1)
+        en3 = self.en2(en2)
+        en4 = self.en2(en3)
+        en5 = self.en2(en4)
+        en6 = self.en2(en5)
+        en7 = self.en2(en6)
+        en8 = self.en2(en7)
+
