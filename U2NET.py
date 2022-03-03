@@ -422,4 +422,4 @@ class U2NET(nn.Module):
 
 if __name__ == "__main__":
     u2net = U2NET()
-    summary(u2net, (3, 256, 256))
+    summary(u2net, (3, 128, 128))
