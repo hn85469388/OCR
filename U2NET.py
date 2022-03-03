@@ -12,7 +12,6 @@ class REBNCONV(nn.Module):
         self.bn = nn.BatchNorm2d(out_ch)
         self.relu = nn.ReLU(inplace=True)
 
-
     def forward(self,  x):
         hx = x
         xout = self.relu(self.bn(self.conv(hx)))
